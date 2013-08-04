@@ -1,0 +1,13 @@
+<h1>Analytics report for {{ site }}</h1>
+
+<ul>
+<li><b>Week progress:</b> {{ week_progress }}
+<li><b>New visitors for last 30 days:</b> {{ month_new_visitors }}
+</ul>
+
+Popular pages:
+<ul>
+{% for page in popular_pages %}
+<li>{{ page.0 }} - <b>{{ page.1 }}</b>
+{% endfor %}
+</ul>
