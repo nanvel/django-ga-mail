@@ -1,9 +1,0 @@
-Analytics report for {{ site }}
-
-Week progress: {{ week_progress }}
-New visitors for last 30 days: {{ month_new_visitors }}
-
-Popular pages:
-{% for page in popular_pages %}
-{{ page.0 }} - {{ page.1 }}
-{% endfor %}

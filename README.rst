@@ -1,7 +1,7 @@
 django-ga-mail app
-============
+==================
 
-A reusable Django app that sends google analytics statistics by email.
+A reusable Django app that sends google analytics report by email.
 
 Installation
 ------------
@@ -18,8 +18,6 @@ To get the latest commit from GitHub
 
     $ pip install -e git+git://github.com/nanvel/django-ga-mail.git#egg=django_ga_mail
 
-TODO: Describe further installation steps (edit / remove the examples below):
-
 Add ``django_ga_mail`` to your ``INSTALLED_APPS``
 
 .. code-block:: python
@@ -29,12 +27,28 @@ Add ``django_ga_mail`` to your ``INSTALLED_APPS``
         'django_ga_mail',
     )
 
+Specify next variables in settings:
 
-Usage
------
+.. code-block:: python
 
-TODO: Describe usage or point to docs. Also describe available settings and
-templatetags.
+    GA_PROFILE_ID = 12345678
+    GA_USERNAME = 'some.user@gmail.com'
+    GA_PASSWORD = 'somepass'
+    GA_SOURCE_APP_NAME = 'some.site',
+    ANALYTICS_BLOCKS = (
+        'unique_visits_7days_today',
+        'visits_7days_today_vs_14days_7days',
+        'pageviews_7days_today')
+
+Available blocks:
+
+    - visits_7days_today
+    - unique_visits_7days_today
+    - visits_7days_today_vs_14days_7days
+    - unique_visits_7days_today_vs_14days_7days
+    - pageviews_7days_today
+
+Call ``python manage.py ga_mail`` to send analytics report.
 
 
 Contribute
@@ -46,9 +60,10 @@ If you want to contribute to this project, please perform the following steps
 
     # Fork this repository
     # Clone your fork
-    $ mkvirtualenv -p python2.7 django-ga-mail
+    $ virtualenv .env --no-site-packages
+    $ source .env/bin/activate
     $ python setup.py install
-    $ pip install -r dev_requirements.txt
+    $ pip install -r test_requirements.txt
 
     $ git co -b feature_branch master
     # Implement your feature and tests

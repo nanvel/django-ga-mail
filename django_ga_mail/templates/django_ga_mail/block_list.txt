@@ -1,0 +1,3 @@
+{{ title }}
+{% for item in list %}- {{ item }}
+{% endfor %}
