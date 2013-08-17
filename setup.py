@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 """
-Python setup file for the django_ga_mail app.
+Python setup file for the ga_mail app.
 
 In order to register your app at pypi.python.org, create an account at
 pypi.python.org and login, then register your new app like so:
@@ -21,7 +21,7 @@ If all looks good, you can make your first release:
     python setup.py sdist upload
 
 For new releases, you need to bump the version number in
-django_ga_mail/__init__.py and re-run the above command.
+ga_mail/__init__.py and re-run the above command.
 
 For more information on creating source distributions, see
 http://docs.python.org/2/distutils/sourcedist.html
@@ -29,7 +29,7 @@ http://docs.python.org/2/distutils/sourcedist.html
 """
 import os
 from setuptools import setup, find_packages
-import django_ga_mail as app
+import ga_mail as app
 
 
 def read(fname):

@@ -111,9 +111,9 @@ class AnalyticsSource(object):
 
 class Report(object):
 
-    TEMPLATE_HEADER = 'django_ga_mail/header.{ext}'
-    TEMPLATE_BLOCK = 'django_ga_mail/block_{type}.{ext}'
-    TEMPLATE_FOOTER = 'django_ga_mail/footer.{ext}'
+    TEMPLATE_HEADER = 'ga_mail/header.{ext}'
+    TEMPLATE_BLOCK = 'ga_mail/block_{type}.{ext}'
+    TEMPLATE_FOOTER = 'ga_mail/footer.{ext}'
 
     def __init__(self, name=None):
         self.site = Site.objects.get_current().domain

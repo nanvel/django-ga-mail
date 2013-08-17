@@ -16,9 +16,9 @@ To get the latest commit from GitHub
 
 .. code-block:: bash
 
-    $ pip install -e git+git://github.com/nanvel/django-ga-mail.git#egg=django_ga_mail
+    $ pip install -e git+git://github.com/nanvel/django-ga-mail.git#egg=ga_mail
 
-Add ``django_ga_mail`` to your ``INSTALLED_APPS``
+Add ``ga_mail`` to your ``INSTALLED_APPS``
 
 .. code-block:: python
 
