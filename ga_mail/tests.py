@@ -14,7 +14,7 @@ class GAMailCommandTestCase(TestCase):
         'GA_SOURCE_APP_NAME': 'some.site',
         'ANALYTICS_BLOCKS': (
             'new_visitors_7days_today',
-            'new_visitors_7days_today_vs_14days_7days',
+            'new_visitos_7days_today_vs_14days_7days',
             'pageviews_7days_today'),
         'MANAGERS': (
             ('Some Admin', 'some.admin@gmail.com'),

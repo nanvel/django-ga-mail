@@ -38,8 +38,8 @@ Specify next variables in settings:
     GA_PASSWORD = 'somepass'
     GA_SOURCE_APP_NAME = 'some.site',
     ANALYTICS_BLOCKS = (
-        'new_visits_30days_today',
-        'new_7days_today_vs_14days_7days',
+        'new_visitors_30days_today',
+        'new_visitors_7days_today_vs_14days_7days',
         'pageviews_7days_today')
 
 Check that MANAGERS variable contains necessary emails.
