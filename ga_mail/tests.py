@@ -13,8 +13,8 @@ class GAMailCommandTestCase(TestCase):
         'GA_PASSWORD': 'somepass',
         'GA_SOURCE_APP_NAME': 'some.site',
         'ANALYTICS_BLOCKS': (
-            'unique_visits_7days_today',
-            'visits_7days_today_vs_14days_7days',
+            'new_visitors_7days_today',
+            'new_visitors_7days_today_vs_14days_7days',
             'pageviews_7days_today'),
         'MANAGERS': (
             ('Some Admin', 'some.admin@gmail.com'),

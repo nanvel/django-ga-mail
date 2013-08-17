@@ -38,18 +38,19 @@ Specify next variables in settings:
     GA_PASSWORD = 'somepass'
     GA_SOURCE_APP_NAME = 'some.site',
     ANALYTICS_BLOCKS = (
-        'unique_visits_7days_today',
-        'visits_7days_today_vs_14days_7days',
+        'new_visits_30days_today',
+        'new_7days_today_vs_14days_7days',
         'pageviews_7days_today')
 
 Check that MANAGERS variable contains necessary emails.
 
 Available blocks:
 
-    - visits_7days_today
-    - unique_visits_7days_today
-    - visits_7days_today_vs_14days_7days
-    - unique_visits_7days_today_vs_14days_7days
+    - returning_visitors_7days_today
+    - new_visitors_7days_today
+    - new_visitors_30days_today
+    - new_visitors_7days_today_vs_14days_7days
+    - new_visitors_7days_today_vs_returning_visitors_7days_today
     - pageviews_7days_today
 
 Call ``python manage.py ga_mail`` to send analytics report.

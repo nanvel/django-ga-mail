@@ -154,17 +154,17 @@ def send_report(blocks):
     source = AnalyticsSource()
     for block in blocks:
         # visitors
-        if block == 'visits_7days_today':
+        if block == 'returning_visitors_7days_today':
             result = source.visits_visitortype_7days_today()
             if not result:
                 continue
-            count = result.get('Visitor', 0)
+            count = result.get('Returning Visitor', 0)
             report.add_block(
                     type='value',
                     context={
-                        'title': 'Visitors for last week',
+                        'title': 'Returning visitors for last week',
                         'value': count})
-        elif block == 'unique_visits_7days_today':
+        elif block == 'new_visitors_7days_today':
             result = source.visits_visitortype_7days_today()
             if not result:
                 continue
@@ -172,40 +172,51 @@ def send_report(blocks):
             report.add_block(
                     type='value',
                     context={
-                        'title': 'Unique visitors for last week',
+                        'title': 'New visitors for last week',
+                        'value': count})
+        elif block == 'new_visitors_30days_today':
+            result = source.visits_visitortype_30days_today()
+            if not result:
+                continue
+            count = result.get('New Visitor', 0)
+            report.add_block(
+                    type='value',
+                    context={
+                        'title': 'New visitors for last week',
                         'value': count})
         # increase
-        elif block == 'visits_7days_today_vs_14days_7days':
+        elif block == 'new_visitors_7days_today_vs_14days_7days':
             result1 = source.visits_visitortype_7days_today()
             if not result1:
                 continue
-            count1 = result.get('Visitor', 0)
+            count1 = result1.get('New Visitor', 0)
             result2 = source.visits_visitortype_14days_7days()
             if not result2:
                 continue
-            count2 = result.get('Visitor', 0)
+            count2 = result2.get('New Visitor', 0)
             if count2 == 0:
                 continue
             report.add_block(
                     type='value',
                     context={
-                        'title': 'Visitors for last week vs visitors week ago',
+                        'title': 'New visitors for last week vs new visitors week ago',
                         'value': round(100. * count1 / count2, 2)})
-        elif block == 'unique_visits_7days_today_vs_14days_7days':
+        # proportions
+        elif block == 'new_visitors_7days_today_vs_returning_visitors_7days_today':
             result1 = source.visits_visitortype_7days_today()
             if not result1:
                 continue
-            count1 = result.get('New Visitor', 0)
-            result2 = source.visits_visitortype_14days_7days()
+            count1 = result1.get('New Visitor', 0)
+            result2 = source.visits_visitortype_7days_today()
             if not result2:
                 continue
-            count2 = result.get('New Visitor', 0)
+            count2 = result2.get('Returning Visitor', 0)
             if count2 == 0:
                 continue
             report.add_block(
                     type='value',
                     context={
-                        'title': 'Unique visitors for last week vs visitors week ago',
+                        'title': 'New visitors for last week vs returning visitors',
                         'value': round(100. * count1 / count2, 2)})
         # pageviews
         elif block == 'pageviews_7days_today':
