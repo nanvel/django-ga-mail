@@ -2,6 +2,6 @@ include AUTHORS
 include LICENSE
 include DESCRIPTION
 include CHANGELOG.txt
-include README.md
-graft django_ga_mail
+include README.rst
+graft ga_mail
 global-exclude *.pyc

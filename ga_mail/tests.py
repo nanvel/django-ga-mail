@@ -25,7 +25,7 @@ class GAMailCommandTestCase(TestCase):
         with self.settings(**self.SETTINGS):
             def ga_communicate(self, start_date, stop_date, metrics, dimensions, filters=None):
                 return {'Visitor': 2, 'New Visitor': 1}
-            with patch('django_ga_mail.utils.AnalyticsSource.ga_communicate', ga_communicate):
+            with patch('ga_mail.utils.AnalyticsSource.ga_communicate', ga_communicate):
                 call_command('ga_mail')
                 self.assertEqual(len(mail.outbox), 1)
                 content = mail.outbox[0].body

@@ -7,7 +7,7 @@ def main():
     settings.configure(
         INSTALLED_APPS=(
             'django.contrib.sites',
-            'django_ga_mail',
+            'ga_mail',
         ),
         DATABASES={
             'default': {
@@ -21,7 +21,7 @@ def main():
     from django.test.simple import DjangoTestSuiteRunner
 
     test_runner = DjangoTestSuiteRunner(verbosity=1)
-    failures = test_runner.run_tests(['django_ga_mail',])
+    failures = test_runner.run_tests(['ga_mail',])
     if failures:
         sys.exit(failures)
 

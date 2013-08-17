@@ -24,7 +24,7 @@ Add ``django_ga_mail`` to your ``INSTALLED_APPS``
 
     INSTALLED_APPS = (
         ...,
-        'django_ga_mail',
+        'ga_mail',
     )
 
 Specify next variables in settings:
@@ -33,12 +33,16 @@ Specify next variables in settings:
 
     GA_PROFILE_ID = 12345678
     GA_USERNAME = 'some.user@gmail.com'
+    # don't use your working account here,
+    # create another one for analytics and give it access to ga profile
     GA_PASSWORD = 'somepass'
     GA_SOURCE_APP_NAME = 'some.site',
     ANALYTICS_BLOCKS = (
         'unique_visits_7days_today',
         'visits_7days_today_vs_14days_7days',
         'pageviews_7days_today')
+
+Check that MANAGERS variable contains necessary emails.
 
 Available blocks:
 
