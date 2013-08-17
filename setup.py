@@ -54,5 +54,6 @@ setup(
     install_requires=[
         'django',
         'gdata',
+        'mock',
     ],
 )
