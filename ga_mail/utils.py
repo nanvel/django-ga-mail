@@ -108,6 +108,19 @@ class AnalyticsSource(object):
         self._pageviews_pagepath_7days_today = result
         return result
 
+    def countries_30days_today(self):
+        result = getattr(self, '_countries', None)
+        if result:
+            return result
+        month_ago = self.today - datetime.timedelta(days=30)
+        result = self.ga_communicate(
+                start_date=month_ago,
+                stop_date=self.today,
+                metrics='ga:visits',
+                dimensions='ga:country')
+        self._countries_30days_today = result
+        return result
+
 
 class Report(object):
 
@@ -182,7 +195,7 @@ def send_report(blocks):
             report.add_block(
                     type='value',
                     context={
-                        'title': 'New visitors for last week',
+                        'title': 'New visitors for last month',
                         'value': count})
         # increase
         elif block == 'new_visitors_7days_today_vs_14days_7days':
@@ -200,7 +213,7 @@ def send_report(blocks):
                     type='value',
                     context={
                         'title': 'New visitors for last week vs new visitors week ago',
-                        'value': round(100. * count1 / count2, 2)})
+                        'value': '%.2f%%' % round(100. * count1 / count2, 2)})
         # proportions
         elif block == 'new_visitors_7days_today_vs_returning_visitors_7days_today':
             result1 = source.visits_visitortype_7days_today()
@@ -217,16 +230,27 @@ def send_report(blocks):
                     type='value',
                     context={
                         'title': 'New visitors for last week vs returning visitors',
-                        'value': round(100. * count1 / count2, 2)})
+                        'value': '%.2f%%' % round(100. * count1 / count2, 2)})
         # pageviews
         elif block == 'pageviews_7days_today':
             result = source.pageviews_pagepath_7days_today()
             if not result:
                 continue
-            popular_pages = sorted(result.iteritems(), key=lambda a: -a[1])[:20]
+            popular_pages = sorted(result.iteritems(), key=lambda a: -a[1])[:10]
             report.add_block(
                     type='list',
                     context={
                         'title': 'Most popular pages',
                         'list': popular_pages})
+        # auditory
+        elif block == 'countries_30days_today':
+            result = source.countries_30days_today()
+            if not result:
+                continue
+            countries = sorted(result.iteritems(), key=lambda a: -a[1])[:10]
+            report.add_block(
+                    type='list',
+                    context={
+                        'title': 'Countries list',
+                        'list': countries})
     report.send()

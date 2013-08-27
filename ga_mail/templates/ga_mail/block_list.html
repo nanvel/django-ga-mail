@@ -1,6 +1,6 @@
-<h2>{{ title }}</h2>
-<ul>
+<div style="padding: 10px; font-size: 14px;">
+{{ title }}
 {% for item in list %}
-    <li>{{ item }}</li>
+    <div style="padding: 10px 10px 10px 20px;">- {{ item.0 }} <span style="background-color: #aaa; color: #fff; padding: 5px;">{{ item.1 }}</span></div>
 {% endfor %}
-</ul>
+</div>

@@ -52,6 +52,7 @@ Available blocks:
     - new_visitors_7days_today_vs_14days_7days
     - new_visitors_7days_today_vs_returning_visitors_7days_today
     - pageviews_7days_today
+    - countries_30days_today
 
 Call ``python manage.py ga_mail`` to send analytics report.
 
